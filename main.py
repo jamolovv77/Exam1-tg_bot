@@ -142,6 +142,44 @@ async def cmd_register(message: Message, command: CommandObject):
 
         )
 
+
+
+
+
+@dp.message(Command("cancel"))
+async def cmd_cancel (message: Message,command: CommandObject):
+    event_id = int(command.args)
+    user_id = str(message.from_user.id)
+
+    
+    old_status, promoted_user_id = await cancel_registration_db(
+        user_id, event_id)
+
+
+    if old_status is None:
+        await message.answer(
+            "wumo xudatonro dar in chorabini dobavit nakadagiend"
+        )
+
+
+    if promoted_user_id is not None:
+        try:
+            await bot.send_message(
+                int(promoted_user_id),
+                "joy xoli wud zaprosi wumo baroi dobavit wudan kabul wud ✅"
+
+
+            )
+        except Exception:
+            pass
+        
+
+
+
+
+
+
+
     
 
 
