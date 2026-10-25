@@ -172,7 +172,27 @@ async def cmd_cancel (message: Message,command: CommandObject):
             )
         except Exception:
             pass
+
+
+@dp.message(Command("my_events"))
+@dp.message(F.text == "📋 naviwtahoi man")
+
+async def cmd_my_events(message:Message):
+    user_id = str(message.from_user.id)
+
+
+
+    events = await get_user_events_db(user_id)
+
+
+
+    if len(events) == 0:
+        await message.answer(
+            "wmo oli dobavit nakardaen xudatonro"
+        )
+
         
+
 
 
 
