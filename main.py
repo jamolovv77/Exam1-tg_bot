@@ -191,6 +191,23 @@ async def cmd_my_events(message:Message):
             "wmo oli dobavit nakardaen xudatonro"
         )
 
+
+    for event in events:
+        if event["status"] == "confirmed":
+            status = "dar ruyhati intizori ⏳"
+
+
+
+        text +=(
+            f"----------------------\n"
+            f"🆔 ID: {event['id']}\n"
+            f"🎟️ Ном: {event['title']}\n"
+            f"📅 Сана: {event['event_date']}\n"
+            f"📍 Ҳолат: {status}\n"
+            "-----------------------\n"
+        )
+        
+
         
 
 
